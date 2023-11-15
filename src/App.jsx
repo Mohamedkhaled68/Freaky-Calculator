@@ -15,7 +15,13 @@ const Calculator = () => {
     const handelNumClick = (num) => {
         if (op.includes(num) && nums.endsWith(num)) return;
         if (op.includes(num) && !nums) return;
-        setNums((prev) => prev + num);
+        if (resultColor) {
+            setNums('');
+            setNums((prev) => prev + num);
+            setResultColor(false);
+        } else {
+            setNums((prev) => prev + num);
+        }
     };
 
     const handleSum = () => {
@@ -100,4 +106,5 @@ const Buttons = ({ children, onNum }) => {
         </>
     );
 };
+
 export default App;
